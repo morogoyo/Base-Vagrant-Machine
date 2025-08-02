@@ -48,6 +48,11 @@ DOCKER_PASSWORD=yourdockerpassword
 vagrant up
 ```
 
+```bash
+# testing command for timing  purposes
+time echo '1' | vagrant up --debug-timestamp
+```
+
 The first time this runs, it will:
 
 - Download the base Ubuntu box
