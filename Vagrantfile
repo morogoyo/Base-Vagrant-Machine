@@ -4,10 +4,13 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
     vb.cpus = 2
+    vb.gui = true
   end
 
-  config.vm.network "public_network"
-  config.vm.boot_timeout = 600  # 10 minutes
+
+  config.vm.boot_timeout = 900  # 15 minutes
+  config.vm.network "public_network" , type: "dhcp"
+
 
   # Shell provisioner that reads .env inside the guest VM
   config.vm.provision "shell", inline: <<-SHELL
@@ -51,6 +54,7 @@ Vagrant.configure("2") do |config|
 
 echo "******************** / pull Docker containers  / ********************"
     docker pull morogoyo/ansible:dev
-    docker run -d
+    docker run -d --name ansible morogoyo/ansible:dev
+
   SHELL
 end
