@@ -7,6 +7,9 @@ Vagrant.configure("2") do |config|
     vb.gui = true
   end
 
+  # Shared folder from host (Windows) to guest (VM)
+  config.vm.synced_folder "E:/development/baseVagrantMachine", "/ansible"
+
 
   config.vm.boot_timeout = 900  # 15 minutes
   config.vm.network "public_network" , type: "dhcp"
